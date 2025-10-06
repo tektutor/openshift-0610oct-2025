@@ -337,3 +337,9 @@ docker pull hello-world:latest
 docker rmi hello-world:latest
 docker images
 ```
+
+## Lab - Getting inside a running container shell
+```
+docker ps
+docker exec -it ubuntu1 /bin/bash
+```
