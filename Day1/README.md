@@ -102,7 +102,10 @@
 - container engines internally depends on Container Runtimes to manage images and containers
 - examples
   - Docker
+    - depends on containerd, containerd in turn depends on runC container runtime
   - Podman
+    - depends on cRun container runtime if you are using Podman outside the context of Openshift
+    - in Openshift, Podman container engine depends on CRI-O Container runtime
 </pre>
 
 ## Info - Linux Kernel Features that supports containerization
@@ -117,4 +120,42 @@
      - with this one can apply resource quota restrictions on individual containers
      - we can ensure one container doesn't take up all CPU cores, RAM and storage, leaving other application containers in starving
        state
+</pre>
+
+## Info - Docker Registries
+<pre>
+- stores multiple docker images
+- there are 3 types of Registries supported by Docker
+  1. Docker Local Registry ( File-system based Registry )
+     - it is folder, generally in linux it is /var/lib/docker
+  2. Docker Private Registry ( Server ) - Optional
+     - can be setup using Sonatype Nexus or JFrog Artifactory Server
+  3. Docker Remote Registry ( Website - Docker Hub )
+     - Remote docker registry that hosts multiple opensource docker images
+</pre>
+
+## Info - Docker Image
+<pre>
+- is a template/blueprint of the container
+- using a single docker image, one can create multiple docker containers
+- whatever software tools we need, we can install all those software and configure them in the Docker image.  When we create containers using those custom image, all the tools that were installed in the docker image can be accessed on the container level
+- examples
+  - Docker Image is similar to windows.iso OS Image, with windows.iso we are able to install Windows OS on multiple machines
+  - same way, using a single docker image, we can create multiple containers of the same application
+  - Docker image will container application and its dependent libraries/frameworks
+- is a JSON file
+- each Docker Image refers one or more Docker Image Layers
+- the number of Docker Layers a Docker Image depends would vary from one image to the other 
+- each Docker Image has an unique ID and name
+- same each Docker Image Layer has an unique ID
+- the Docker Image Layers can be used by multiple different docker images
+</pre>
+
+## Info - Docker Container
+<pre>
+- is a running instance of a Docker image
+- each container represents one application or one application component ( database, message queue, webserver,app server, etc.,)
+- each container get's separate IP address, ports, etc.,
+- each container also get its own network stack, network cards, etc.,
+- ideal use-case of container is one application/per container
 </pre>
