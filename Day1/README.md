@@ -172,3 +172,12 @@ docker info
 docker images
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/f53facb4-778a-4673-a82e-8fbfef5f8605" />
+
+## Lab - Downloading docker image from Docker Hub Remote registry to your local Docker Registry
+```
+docker pull tektutor/nginx:latest
+docker pull tektutor/spring-ms:1.0
+docker pull ubuntu:latest
+docker pull hello-world:latest
+```
+
