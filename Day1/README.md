@@ -261,6 +261,7 @@ docker images | grep ubuntu
 docker image inspect ubuntu:latest
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/a6b0677a-ce60-4bbe-9ec8-648d8b720ed6" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/0536fe1f-db62-425a-afa6-d8bea2a214b2" />
 
 ## Lab - Find more details about a container
 ```
@@ -268,3 +269,5 @@ docker ps
 docker inspect ubuntu1
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/1b0a93f5-2e9b-481c-b523-a2392a0a5360" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d132df09-a1c9-4aa4-b07e-e432c89b8b58" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/05ed9c5f-7c9d-4730-94ae-85806863c155" />
