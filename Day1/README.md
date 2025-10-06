@@ -159,3 +159,10 @@
 - each container also get its own network stack, network cards, etc.,
 - ideal use-case of container is one application/per container
 </pre>
+
+## Lab - Finding details about your docker
+```
+docker --version
+docker info
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/71e59aa5-7f72-4f2f-912b-3eb86f12a038" />
