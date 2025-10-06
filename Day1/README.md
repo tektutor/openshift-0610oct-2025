@@ -271,3 +271,15 @@ docker inspect ubuntu1
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/1b0a93f5-2e9b-481c-b523-a2392a0a5360" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/d132df09-a1c9-4aa4-b07e-e432c89b8b58" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/05ed9c5f-7c9d-4730-94ae-85806863c155" />
+
+## Lab - Find the IP address of running containers
+```
+docker ps
+
+docker inspect ubuntu1 | grep IPA
+docker inspect ubuntu2 | grep IPA
+
+docker inspect -f {{.NetworkSettings.IPAddress}} ubuntu1
+docker inspect -f {{.NetworkSettings.IPAddress}} ubuntu2
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/bc26dc31-85af-4ae9-932b-dc400023f839" />
