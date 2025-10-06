@@ -254,3 +254,17 @@ See if you can ping ns1 from ns2
 ```
 sudo ip netns exec ns2 ping 10.20.0.1 -c 4
 ```
+
+## Lab - Find more details about a docker image
+```
+docker images | grep ubuntu
+docker image inspect ubuntu:latest
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/a6b0677a-ce60-4bbe-9ec8-648d8b720ed6" />
+
+## Lab - Find more details about a container
+```
+docker ps
+docker inspect ubuntu1
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/1b0a93f5-2e9b-481c-b523-a2392a0a5360" />
