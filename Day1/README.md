@@ -78,4 +78,28 @@
 - containerization is not a technology that will be able to replace OS or virtualization any day
 - they are not competing technology, ideally they are complementing technology
 - hence, both virtualization and containerization can be used together in combination in real-world applications
+- examples
+  - Docker
+  - Podman
+</pre>
+
+## Info - Container Runtime
+<pre>
+- is a low-level software that helps us manage container images and container instances
+- it is not so user-friendly, hence normally end-users don't use this directly
+- examples
+  - runC
+  - cRun
+  - CRI-O
+  - containerd
+</pre>
+
+## Info - Container Engine Overview
+<pre>
+- is a high-level software that helps us manage container images and container instances
+- it is very user-friendly, without knowing low-level Linux Kernel stuffs one can easily create and manage containers with these tools
+- container engines internally depends on Container Runtimes to manage images and containers
+- examples
+  - Docker
+  - Podman
 </pre>
