@@ -330,4 +330,10 @@ docker rm -f ubuntu2 ubuntu3
 docker rm -f $(docker ps -aq)
 ```
 
-
+## Lab - Deleting docker image from your local docker registry
+```
+docker images
+docker pull hello-world:latest
+docker rmi hello-world:latest
+docker images
+```
