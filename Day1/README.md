@@ -283,3 +283,34 @@ docker inspect -f {{.NetworkSettings.IPAddress}} ubuntu1
 docker inspect -f {{.NetworkSettings.IPAddress}} ubuntu2
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/bc26dc31-85af-4ae9-932b-dc400023f839" />
+
+## Lab - Stopping running containers
+```
+docker stop ubuntu1
+docker stop ubuntu2 ubuntu3
+# Use this carefully, as this stop all containers
+docker stop $(docker ps -q)
+```
+
+## Lab - Start exited containers
+```
+dokcer start ubuntu1
+docker start ubuntu2 ubuntu3
+docker start $(docker ps -aq)
+```
+
+## Lab - Restart running containers
+```
+dokcer restart ubuntu1
+docker restart ubuntu2 ubuntu3
+docker restart $(docker ps -q)
+```
+
+## Lab - Delete non-running containers
+```
+docker rm ubuntu1
+docker rm ubuntu2 ubuntu3
+# Dangerous - delete all containers
+docker rm -f $(docker ps -aq)
+```
+
