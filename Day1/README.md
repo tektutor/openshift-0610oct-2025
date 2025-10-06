@@ -166,3 +166,9 @@ docker --version
 docker info
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/71e59aa5-7f72-4f2f-912b-3eb86f12a038" />
+
+## Lab - Listing docker images from Docker Local Registry
+```
+docker images
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/f53facb4-778a-4673-a82e-8fbfef5f8605" />
