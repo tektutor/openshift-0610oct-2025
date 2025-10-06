@@ -5,3 +5,8 @@
 
 ## Server 2 ( 192.168.3.201 )
 ![Server 2](server2.png)
+
+## Pre Test
+<pre>
+https://forms.cloud.microsoft/r/t9ZLUPGe2S  
+</pre>
