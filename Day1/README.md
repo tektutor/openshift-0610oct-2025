@@ -57,3 +57,22 @@
 - Assume the laptop has Windows 12 as the Host OS
 - each Physical CPU core support 2 logical cores ( 4 x 2 = 8 logical cores )
 - We can run 1 Host OS + 7 VMs
+
+## Info - Containerization
+<pre>
+- is an application virtualization technology
+- it is purely software defined technology
+- this type of virtualization is called light-weight virtualization
+  - the reason is, containers are not allocated with dedicated hardware resources
+  - in other words, all containers running on same Host/VM shares the hardware resources on the underlying Host/VM
+- each container represents on application or an application process
+- containers are not Operating System
+- container may look like an Operating System, but technically they are mere an application process
+- container's don't have their own OS Kernel
+- However, there are some similarities between an OS and container
+  - containers get's their own dedicated network stack and one or more IP addresses
+  - containers has their own file system
+  - containers has its own dedicated port range ( 0 - 65535 )
+  - containers may have their own shell 
+  - containers may have one or more users 
+</pre>
