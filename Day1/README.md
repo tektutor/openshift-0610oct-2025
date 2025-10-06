@@ -311,6 +311,23 @@ docker restart $(docker ps -q)
 docker rm ubuntu1
 docker rm ubuntu2 ubuntu3
 # Dangerous - delete all containers
+docker rm $(docker ps -aq)
+```
+
+## Lab - Delete running containers
+Approach 1
+```
+docker stop ubuntu1
+docker stop ubuntu2 ubuntu3
+# Dangerous - delete all containers
+docker rm $(docker ps -aq)
+```
+Approach 2 ( Forcible )
+```
+docker rm -f ubuntu1
+docker rm -f ubuntu2 ubuntu3
+# Dangerous - delete all containers
 docker rm -f $(docker ps -aq)
 ```
+
 
