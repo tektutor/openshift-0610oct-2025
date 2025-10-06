@@ -21,3 +21,21 @@ Note
 - if you are able to answer some or most of them, you already seem to know about containers, container orchestration, etc.,
 - Once you complete the test, kindly notify me
 </pre>
+
+## Check if you are able to access all the tools required for this training ( From the terminal )
+
+Check if docker is installed
+```
+docker --version
+docker info
+docker images
+```
+
+Check if Red Hat Openshift is installed
+```
+oc version
+kubectl version
+oc get nodes
+kubectl get nodes
+```
+
