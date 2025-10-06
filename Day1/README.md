@@ -75,4 +75,7 @@
   - containers has its own dedicated port range ( 0 - 65535 )
   - containers may have their own shell 
   - containers may have one or more users 
+- containerization is not a technology that will be able to replace OS or virtualization any day
+- they are not competing technology, ideally they are complementing technology
+- hence, both virtualization and containerization can be used together in combination in real-world applications
 </pre>
