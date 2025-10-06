@@ -34,6 +34,26 @@
 - the OS that runs within the Virtual Machine(VM), they are called Guest OS
 - the hardwares allocated to one VM can't be used by other VMs
 - the Guest OS can be Windows, Unix, Linux, Mac OS-X, they are a fully functional Operating System
-- 
+- all VMs are isolated from each other, that way they can't intentionally/unintentionally access each other's hardware resources
+- this type of virtualization that requires allocating dedicated hardwares resources is called heavy-weight virtualization
+- each VM represents one fully functiona Operating System that has
+  - its own hardware resources
+    - CPU Cores ( logical )
+    - RAM
+    - Store
+  - its own OS Kernel
+  - its own network card(s) - virtual
+  - its own graphics card(s) - virtual
+  - its own network statck and IP addresses
 </pre>
 
+## Info - What is the maximum number of VMs that can be created ?
+- Assume you have a laptop/desktop with below hardware configuration
+- Quad Core Processor ( 4 CPU Cores )
+- 16 GB RAM
+- 500 GB SDD ( Storage )
+
+- Assume we just wanted to run some hello REST API on those VMs, i.e minimal hardware configuration is sufficient.
+- Assume the laptop has Windows 12 as the Host OS
+- each Physical CPU core support 2 logical cores ( 4 x 2 = 8 logical cores )
+- We can run 1 Host OS + 7 VMs
