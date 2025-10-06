@@ -342,4 +342,9 @@ docker images
 ```
 docker ps
 docker exec -it ubuntu1 /bin/bash
+hostname
+hostname -i
+ls
+exit
+
 ```
