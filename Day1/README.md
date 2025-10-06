@@ -184,6 +184,8 @@ docker pull hello-world:latest
 ## Lab - Creating a container in background(daemon) mode
 ```
 docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:latest /bin/bash
+docker run -dit --name ubuntu2 --hostname ubuntu2 ubuntu:latest /bin/bash
+
 ```
 Let's understand the above command switch options
 <pre>
