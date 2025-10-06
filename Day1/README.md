@@ -185,13 +185,12 @@ docker pull hello-world:latest
 ```
 docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:latest /bin/bash
 docker run -dit --name ubuntu2 --hostname ubuntu2 ubuntu:latest /bin/bash
-
 ```
 Let's understand the above command switch options
 <pre>
 - d - daemon/background
 - it - interactive 
-- name - name of the container ( only docker recognizes this not your OS )
+- name - name of the container ( only docker recognizes this not your OS ), append your name to avoid naming conflicts
 - hostname - hostname of the container ( this is recognized by your OS if the /etc/hosts entry or DNS is able to resolve the IP)
 - ubuntu:latest - this the name of the image with which you would like to create the container, latest is the tag/version of the image
 - /bin/bash - you wish to run the terminal as the default application once the container is made to run
