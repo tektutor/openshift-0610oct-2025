@@ -181,3 +181,14 @@ docker pull ubuntu:latest
 docker pull hello-world:latest
 ```
 
+## Lab - Creating a container in background(daemon) mode
+```
+docker run -dit --name ubuntu1 --hostname ubuntu1 ubuntu:latest /bin/bash
+```
+
+List the currently running containers
+```
+docker ps
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/2d0db887-6645-444b-8bf7-44a234df7bd2" />
+
