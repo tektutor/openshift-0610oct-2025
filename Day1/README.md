@@ -87,6 +87,7 @@
 <pre>
 - is a low-level software that helps us manage container images and container instances
 - it is not so user-friendly, hence normally end-users don't use this directly
+- Container Runtimes dependends on underlying OS Kernel for isolating containers and applying resource quota restrictions, etc
 - examples
   - runC
   - cRun
@@ -102,4 +103,18 @@
 - examples
   - Docker
   - Podman
+</pre>
+
+## Info - Linux Kernel Features that supports containerization
+<pre>
+- Linux kernel supports two features that enables containerization
+  1. Namespace
+     - it helps isolating one container from other containers
+     - let's say two containers C1 and C2 are running in an Ubuntu Linux OS
+     - the applications running in C1 and C2 are totally independent
+     - assume, if the application running inside C1 is faulty(has some bugs), due to some issues in C1, it should not bring down the C2 containerized application, this is where isolation comes into picture
+  2. Control Groups (CGroups)
+     - with this one can apply resource quota restrictions on individual containers
+     - we can ensure one container doesn't take up all CPU cores, RAM and storage, leaving other application containers in starving
+       state
 </pre>
