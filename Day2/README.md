@@ -241,5 +241,18 @@ kubectl version
 oc version
 oc get nodes
 oc get nodes -o wide
+kubectl get nodes
+kubectl get nodes -o wide
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/72d73395-aaaf-4dd2-a401-8669fe14a06d" />
+
+## Lab - Finding more details about a node
+```
+oc describe node/master01.ocp4.palmeto.org
+oc describe node/master02.ocp4.palmeto.org
+oc describe node/master03.ocp4.palmeto.org
+oc describe node/worker01.ocp4.palmeto.org
+oc describe node/worker02.ocp4.palmeto.org
+oc describe node/worker03.ocp4.palmeto.org
+```
+
