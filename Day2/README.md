@@ -247,6 +247,9 @@ kubectl get nodes -o wide
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/72d73395-aaaf-4dd2-a401-8669fe14a06d" />
 
 ## Lab - Finding more details about a node
+
+Kuberbetes/Openshift describe is equivalent to docker inspect command.
+
 ```
 oc describe node/master01.ocp4.palmeto.org
 oc describe node/master02.ocp4.palmeto.org
@@ -254,5 +257,29 @@ oc describe node/master03.ocp4.palmeto.org
 oc describe node/worker01.ocp4.palmeto.org
 oc describe node/worker02.ocp4.palmeto.org
 oc describe node/worker03.ocp4.palmeto.org
+```
+
+## Lab - Let's create a project ( namespace )
+```
+oc new-project jegan
+```
+
+List the projects
+```
+oc get projects
+oc get project
+oc get namespaces
+oc get namespace
+oc get ns
+```
+Finding currently active project
+```
+oc project
+```
+
+Switching between projects
+```
+oc project default
+oc project jegan
 ```
 
