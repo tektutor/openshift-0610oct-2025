@@ -65,8 +65,11 @@
 - there are two types of nodes
   1. Master Node
      - Control Plane components will be running here
+     - you can install any Linux OS
   2. Worker Node
      - User applications will be deployed here
+     - you can install any Linux OS
+
 - there is no user-management (Role Based Access Control )
 - applications can be deployed only with existing/pre-build container images
 </pre>
@@ -79,6 +82,11 @@
 - Until version 3.12, Openshift support Docker Container Engine and runC container runtime by default
 - Due to security issues in Docker, Openshift dropped support for Docker and instead they started support Podman Container Engine with CRI-O container runtime
 - Starting from Openshift v4.x, Red Hat Openshift restricted the Operating System that can be installed in Master and Worker Nodes
+- Master Nodes
+  - only supported OS is RedHat Enterprise Linux Core OS (RHCOS)
+- Worker Nodes
+  - the OS choices are RHEL or RHCOS
+- Red Hat Openshift recommends using RHCOS in both master and worker nodes
 - supports User Management
 - supports Performance metrics out of the box
   - Prometheus & Grafana comes pre-integrated
@@ -92,4 +100,54 @@
     - supports many strategies
       - Docker
       - Source
+</pre>
+
+## Info - Red Hat Enterprise Linux Core OS ( RHCOS )
+<pre>
+- When Red Hat acquired CoreOS company, they had an optimized small-footprint OS called CoreOS
+- RedHat developed RHCOS using CoreOS
+- RHCOS enforces best practices and security policies
+- it allows applications to run within containers
+- it allows applications to run as non-admin ( rootless )
+- only special type of applications are allowed to run with admin privilege
+- In RHCOS 
+  - /etc folder is read-only
+  - /var, /etc, /boot folders can only be modifed by Machine Config Operators (MCO)
+  - ports below 1024 are reserved for internal use, hence user-applications won't be able to use ports upto 1024
+- this OS comes with preinstalled Podman Container Engine, CRI-O Container Runtime, crictl client tool, and many openshift specific tools
+</pre>
+
+## Info - Control Plane Components
+<pre>
+1. API Server
+2. etcd key/value database
+3. scheduler
+4. controller managers
+</pre>
+
+## Info - Kubernetes/Openshift Master Node
+<pre>
+- Control Plane components only runs in master node
+- In case of Kubernetes, any Linux OS can be installed
+- In case of Openshift, only RHCOS can be installed
+- generally user-applications are not allowed to run in master nodes
+- in some special cases/setups, we could configured master nodes to allow deploying user applications
+</pre>
+
+## Info - Kubernetes/Openshift Worker Node
+<pre>
+- user applications generally runs here
+</pre>
+
+## Info - Common components that runs in Master & Worker Nodes in Openshift
+<pre>
+- Podman Container Engine 
+- CRI-O Container Runtime
+- RHCOS
+- kubelet - Kubernetes Container Agent
+  - this interacts with CRI-O Container Runtime to manage images and containers
+- kube-proxy
+  - this components supports load-balancing
+- default-dns
+  - this supports service discovery
 </pre>
