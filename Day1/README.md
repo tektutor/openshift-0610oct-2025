@@ -396,7 +396,7 @@ docker run -d --name nginx2 --hostname nginx2 tektutor/nginx:latest
 docker run -d --name nginx3 --hostname nginx3 tektutor/nginx:latest
 ```
 
-Let's create a loadbalancer container with port-forwarding for external access
+Let's create a loadbalancer container with port-forwarding for external access. The port 80 on the left side must be replaced with some other non-conflicting port as everyone will use port 80.
 ```
 docker run -d --name lb --hostname lb -p 80:80 nginx:latest
 ```
@@ -476,4 +476,10 @@ docker cp lb:/etc/nginx/nginx.conf .
 To apply config changes on lb container, let's restart lb container
 ```
 docker restart lb
+docker ps
+```
+
+Now you can access the loadbalancer from your lab machine web browse
+```
+http://192.168.3.200:80 //or 192.168.3.201:80 in case you are working in second server
 ```
