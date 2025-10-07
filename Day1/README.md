@@ -478,6 +478,8 @@ http {
 
 Containers created using tektutor Nginx image by default works as web server, hence we need to configure it to work like load balancer
 ```
+cd ~/openshift-0610oct-2025/Day1
+code .
 docker cp lb:/etc/nginx/nginx.conf .
 ```
 
