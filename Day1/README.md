@@ -428,8 +428,8 @@ docker cp index.html nginx3:/usr/share/nginx/html/index.html
 Let's find the IP address of nginx1, nginx2 and nginx3 web server containers
 ```
 docker inspect nginx1 | grep IPA
-docker inspect -f {{.NetworkSetting.IPAddress}} nginx2
-docker inspect -f {{.NetworkSetting.IPAddress}} nginx3
+docker inspect -f {{.NetworkSettings.IPAddress}} nginx2
+docker inspect -f {{.NetworkSettings.IPAddress}} nginx3
 ```
 
 Let's access the web page from nginx1, nginx2 and nginx3
@@ -439,7 +439,41 @@ curl http://172.17.0.3:8080
 curl http://172.17.0.4:8080
 ```
 
+Let's create a nginx.conf file with the below content
+<pre>
+# Nginx for OpenShift – fully compatible with non-root UID
+# user directive removed (ignored anyway in OpenShift)
+
+worker_processes auto;
+
+error_log /dev/stderr warn;
+pid /var/run/nginx.pid;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    upstream backend {
+        server 172.17.0.2:8080;
+        server 172.17.0.3:8080;
+        server 172.17.0.4:8080;
+    }
+
+    server {
+        location / {
+            proxy_pass http://backend;
+        }
+    }
+}  
+</pre>
+
 Containers created using tektutor Nginx image by default works as web server, hence we need to configure it to work like load balancer
 ```
 docker cp lb:/etc/nginx/nginx.conf .
+```
+
+To apply config changes on lb container, let's restart lb container
+```
+docker restart lb
 ```
