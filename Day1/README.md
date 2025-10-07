@@ -480,7 +480,7 @@ Containers created using tektutor Nginx image by default works as web server, he
 ```
 cd ~/openshift-0610oct-2025/Day1
 code .
-docker cp lb:/etc/nginx/nginx.conf .
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
 ```
 
 To apply config changes on lb container, let's restart lb container
