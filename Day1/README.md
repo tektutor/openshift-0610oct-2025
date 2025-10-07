@@ -69,6 +69,24 @@
 ## Info - Hypervisor High-Level Architecture
 ![hypervisor](HypervisorHighLevelArchitecture.png)
 
+## Info - Processors
+<pre>
+- comes in 2 packages
+  1. SCM ( Single Chip Module )
+     - 1 IC will contain 1 Processor
+  2. MCM ( Multiple Chip Module )
+     - 1 IC may contain 2 or 4 or 8 Processors
+- each such Processor may support 128/256 CPU Cores
+- Server Grade Motherboards
+  - some of them support 4/8 Processor Sockets
+- If we assume, the server supports 4 Sockets and we installed MCM IC with 4 Processors in each IC
+  - 4 x 128 x 4 = 2048 Physical CPU core
+  - most CPU Core these days supports Hyperthreading
+  - i.e each CPU Core can parallely run 2/4/6/8 threads
+  - 2048 x 2 Logical cores = 4096 logical CPU core
+
+</pre>  
+
 ## Info - Containerization
 <pre>
 - is an application virtualization technology
