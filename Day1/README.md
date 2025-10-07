@@ -384,6 +384,14 @@ exit
 ```
 
 ## Lab - Setting up a Load Balancer with nginx
+
+Cloning this repository in your lab machine terminal
+```
+cd ~/
+git clone https://github.com/tektutor/openshift-0610oct-2025.git
+cd openshift-0610oct-2025/Day1
+```
+
 Let's delete all existing containers, replace 'jegan' with your names or as per your container names
 ```
 docker rm -f nginx1-jegan nginx2-jegan nginx3-jegan
