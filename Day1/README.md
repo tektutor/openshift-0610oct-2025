@@ -536,3 +536,7 @@ SHOW TABLES;
 SELECT * FROM training;
 ```
 
+Checking the mysql db server logs
+```
+docker logs mysql-jegan
+```
