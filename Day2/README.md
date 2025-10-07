@@ -125,6 +125,63 @@
 4. controller managers
 </pre>
 
+## Info - API Server Overview
+<pre>
+- is a Pod that runs in Master node
+- it supports loads of REST APIs for every container orchestration features supported by Openshift
+- API server is the heart/brain of Kubernetes/Openshift
+- all components all allowed/aware to talk to only API Server, they can't talk to each other directly
+- in other words, all communications happens only via API Server
+- API is the only components that has write access to etcd database
+- all the cluster state, application status, etc are stored in the etcd datbase
+- each time API Server updates anything in the etcd, API server will send a broadcasting event
+</pre>
+
+## Info - etcd 
+<pre>
+- this is a distributed key/value database
+- this is a Pod
+- it is an independent opensource project which is used by Kubernetes/Openshift
+- generally works a cluster of etcd database instances
+- all the etcd db servers that are part of a cluster, gets the data automatically synchronized 
+</pre>
+
+## Info - Scheduler
+<pre>
+- is a Pod which is one of the Control Plane component that runs in master nodes
+- scheduler is the one which is responsible to identify a healthy node where a newly created pod can be deployed
+- scheduler will send the scheduling recommendations to API Server via REST api
+- API server updates the scheduling info in the Pod yaml definitions and sends a broadcasting event 
+</pre>
+
+## Info - Controller Managers
+<pre>
+- is a Pod that is part of Control Plane 
+- is a group of Controllers
+  - Deployment Controller
+  - ReplicaSet Controller
+  - StatefulSet Controller
+  - Job Controller
+  - CronJob Controller
+  - DaemonSet Controller
+  - Storage Controller
+  - Node Controller
+  - Endpoint Controller
+- each Controller Manages one of type of Kubernetes/Openshift resource
+  - for instance
+    - Deployment Controller manages Deployment
+      - responsible for rolling update
+      - responsible for stateless application deployment
+      - it monitors whether the application is in desired state
+    - ReplicaSet Controller managed ReplicaSet
+      - responsible for scale up/down
+      - ensures the desired number of pods mentioned in the ReplicaSet definition are always running
+      - in case 
+
+</pre>
+
+
+
 ## Info - Kubernetes/Openshift Master Node
 <pre>
 - Control Plane components only runs in master node
@@ -150,4 +207,30 @@
   - this components supports load-balancing
 - default-dns
   - this supports service discovery
+</pre>
+
+## Info - Pod Overview
+<pre>
+- Pod is the smallest unit that can be deployed in Kubernetes and Openshift
+- Pod is a logical grouping of containers
+- Every Pod has a secret infra-container called pause container which supports networking
+- all containers within the same Pod are connected to the pause container's network, 
+  hence they all share the 
+  - same IP address
+  - Port range ( 0 - 65535 )
+  - hostname
+- in case of Kubernetes/Openshift Pod is a YAML( superset of JSON ) stored inside etcd database
+- Pod YAML definition captures the below details
+  - name of the containers
+  - name of the container images that must be used to create the respective containers
+- excluding the pause container, ideally every Pod must be restricted to just one container per Pod
+</pre>
+
+## Info - ReplicaSet Overview
+<pre>
+-  is a YAML resource stored in etcd database
+- ReplicaSet tells the below
+  - Which container image must be used to create the Pod containers
+  - How to Pod containers must be created
+  - What is the name of the containers
 </pre>
