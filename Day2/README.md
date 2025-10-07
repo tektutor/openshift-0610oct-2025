@@ -310,3 +310,9 @@ oc get pod
 oc get po
 ```
 
+## Lab - Scaling up nginx pods from 3 to 5
+```
+oc project jegan
+oc scale deploy/nginx --replicas=5
+oc get pods -w
+```
