@@ -382,3 +382,27 @@ ls
 exit
 
 ```
+
+## Lab - Setting up a Load Balancer with nginx
+
+Let's create 3 web server containers without port-forward
+```
+docker run -d --name nginx1 --hostname nginx1 tektutor/nginx:latest
+docker run -d --name nginx2 --hostname nginx2 tektutor/nginx:latest
+docker run -d --name nginx3 --hostname nginx3 tektutor/nginx:latest
+```
+
+Let's create a loadbalancer container with port-forwarding for external access
+```
+docker run -d --name lb --hostname lb -p 80:8080 tektutor/nginx:latest
+```
+
+Let's list and see if they are running
+```
+docker ps
+```
+
+Let's get inside one of the nginx web server container to identify from which folder the web page is served 
+```
+docker exec -it nginx1 /bin/sh
+```
