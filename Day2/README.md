@@ -234,3 +234,12 @@
   - How to Pod containers must be created
   - What is the name of the containers
 </pre>
+
+## Lab - Listing openshift nodes in the cluster
+```
+kubectl version
+oc version
+oc get nodes
+oc get nodes -o wide
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/72d73395-aaaf-4dd2-a401-8669fe14a06d" />
