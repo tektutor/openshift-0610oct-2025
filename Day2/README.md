@@ -283,3 +283,30 @@ oc project default
 oc project jegan
 ```
 
+## Lab - Deploying your first application in Openshift under your project
+```
+oc project jegan
+oc create deployment nginx --image=tektutor/nginx:latest --replicas=3
+```
+
+Listing the deployments
+```
+oc get deployments
+oc get deployment
+oc get deploy
+```
+
+Listing the replicasets
+```
+oc get replicasets
+oc get replicaset
+oc get rs
+```
+
+Listing the pods
+```
+oc get pods
+oc get pod
+oc get po
+```
+
