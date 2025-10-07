@@ -384,6 +384,10 @@ exit
 ```
 
 ## Lab - Setting up a Load Balancer with nginx
+Let's delete all existing containers
+```
+docker rm -f $(docker ps -aq)
+```
 
 Let's create 3 web server containers without port-forward
 ```
@@ -405,4 +409,33 @@ docker ps
 Let's get inside one of the nginx web server container to identify from which folder the web page is served 
 ```
 docker exec -it nginx1 /bin/sh
+cd /usr/share/nginx/html
+ls
+exit
 ```
+Let's customize the html web on nginx1, nginx2 and nginx3 web servers
+```
+echo "Server 1" > index.html
+docker cp index.html nginx1:/usr/share/nginx/html/index.html
+
+echo "Server 2" > index.html
+docker cp index.html nginx1:/usr/share/nginx/html/index.html
+
+echo "Server 3" > index.html
+docker cp index.html nginx1:/usr/share/nginx/html/index.html
+```
+
+Let's find the IP address of nginx1, nginx2 and nginx3 web server containers
+```
+docker inspect nginx1 | grep IPA
+docker inspect -f {{.NetworkSetting.IPAddress}} nginx2
+docker inspect -f {{.NetworkSetting.IPAddress}} nginx3
+```
+
+Let's access the web page from nginx1, nginx2 and nginx3
+```
+curl http://172.17.0.2:8080
+curl http://172.17.0.3:8080
+curl http://172.17.0.4:8080
+```
+
