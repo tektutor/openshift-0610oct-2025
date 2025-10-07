@@ -419,10 +419,10 @@ echo "Server 1" > index.html
 docker cp index.html nginx1:/usr/share/nginx/html/index.html
 
 echo "Server 2" > index.html
-docker cp index.html nginx1:/usr/share/nginx/html/index.html
+docker cp index.html nginx2:/usr/share/nginx/html/index.html
 
 echo "Server 3" > index.html
-docker cp index.html nginx1:/usr/share/nginx/html/index.html
+docker cp index.html nginx3:/usr/share/nginx/html/index.html
 ```
 
 Let's find the IP address of nginx1, nginx2 and nginx3 web server containers
