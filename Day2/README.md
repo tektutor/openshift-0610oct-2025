@@ -53,7 +53,9 @@
   - StatefulSet application
   - Job/CronJob
   - DaemonSet
-- it also supports extending Kubernetes API by adding our own custom resources
+  - ConfigMap
+  - Secret
+- it also supports extending Kubernetes API by adding our own custom resources and custom controller
 - using these basic building blocks we can add many additional features on top of Kubernetes
 - they work as cluster of many nodes(servers)
 - a Node in container orchestration platforms
