@@ -52,11 +52,13 @@
 - Quad Core Processor ( 4 CPU Cores )
 - 16 GB RAM
 - 500 GB SDD ( Storage )
-
 - Assume we just wanted to run some hello REST API on those VMs, i.e minimal hardware configuration is sufficient.
 - Assume the laptop has Windows 12 as the Host OS
 - each Physical CPU core support 2 logical cores ( 4 x 2 = 8 logical cores )
 - We can run 1 Host OS + 7 VMs
+
+## Info - Hypervisor High-Level Architecture
+![hypervisor](HypervisorHighLevelArchitecture.png)
 
 ## Info - Containerization
 <pre>
@@ -159,6 +161,11 @@
 - each container also get its own network stack, network cards, etc.,
 - ideal use-case of container is one application/per container
 </pre>
+
+## Info - Docker High-Level Architecture
+![docker](DockerHighLevelArchitecture.png)
+![docker](docker-architecture.jpg)
+![docker](DockerLayers.png)
 
 ## Lab - Finding details about your docker
 ```
