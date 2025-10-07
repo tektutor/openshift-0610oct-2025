@@ -493,3 +493,46 @@ Now you can access the loadbalancer from your lab machine web browse
 ```
 http://192.168.3.200:80 //or 192.168.3.201:80 in case you are working in second server
 ```
+
+## Lab - Persisting container data in an external storage
+```
+mkdir -p ~/mysql
+docker run -d --name mysql-jegan --hostname mysql-jegan -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest 
+```
+
+Get inside the container shell to connect with mysql server
+```
+docker exec -it mysql-jegan /bin/sh
+mysql -u root -p
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE training ( id INT NOT NULL UNIQUE, name VARCHAR(300) NOT NULL, duration VARCHAR(300) NOT NULL, PRIMARY KEY(id) );
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "OpenShift", "5 Days");
+SELECT * FROM training;
+
+exit
+exit
+```
+
+Let's delete the mysql container
+```
+docker stop mysql
+docker rm mysql
+```
+Let's new mysql container
+```
+docker run -d --name mysql-jegan --hostname mysql-jegan -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest 
+```
+
+
+Let's get inside the mysql container shell
+```
+docker exec -it mysql-jegan /bin/sh
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+```
+
