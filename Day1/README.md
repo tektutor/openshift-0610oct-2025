@@ -384,9 +384,9 @@ exit
 ```
 
 ## Lab - Setting up a Load Balancer with nginx
-Let's delete all existing containers
+Let's delete all existing containers, replace 'jegan' with your names or as per your container names
 ```
-docker rm -f $(docker ps -aq)
+docker rm -f nginx1-jegan nginx2-jegan nginx3-jegan
 ```
 
 Let's create 3 web server containers without port-forward
@@ -398,7 +398,7 @@ docker run -d --name nginx3 --hostname nginx3 tektutor/nginx:latest
 
 Let's create a loadbalancer container with port-forwarding for external access
 ```
-docker run -d --name lb --hostname lb -p 80:8080 tektutor/nginx:latest
+docker run -d --name lb --hostname lb -p 80:80 nginx:latest
 ```
 
 Let's list and see if they are running
@@ -439,3 +439,7 @@ curl http://172.17.0.3:8080
 curl http://172.17.0.4:8080
 ```
 
+Containers created using tektutor Nginx image by default works as web server, hence we need to configure it to work like load balancer
+```
+docker cp lb:/etc/nginx/nginx.conf .
+```
