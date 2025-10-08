@@ -29,7 +29,6 @@ http://localhost:9999
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/3aae1e04-1e25-476e-9c31-cb14dbaac6dc" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/c0fc251a-06d2-4fcd-a0aa-fef5563bc89b" />
 
-
 ## Info - Kubernetes/Openshift Service
 <pre>
 - Service represents a group of load-balanced Pods from a single deployment
@@ -37,7 +36,12 @@ http://localhost:9999
 - Hence, applications must be using service name to access one of the Pod endpoint
 - While the pods behind the service can be replaced by other pods, due to scale up/down, we can use the stable service IP or Service name
 - When the service is accessed via its name, it is called service discovery
+- Kubernetes/Openshift supports 3 types of services
+  1. ClusterIP Internal Service
+  2. NodePort External service
+  3. LoadBalancer External service
 </pre>
+
 
 ## Lab - Finding the containers in a Pod
 ```
