@@ -111,6 +111,23 @@ oc project jegan
 oc delete deploy/nginx svc/nginx route/nginx
 ```
 
+## Lab - Editing resources
+```
+oc project jegan
+oc edit deploy/nginx
+oc edit rs/nginx-aabbcc
+oc edit pod/nginx-aabbcc-xxyyzz
+
+oc get deploy/nginx -o json
+oc get deploy/nginx -o yaml
+
+oc get rs/nginx-aabbcc -o json
+oc get rs/nginx-aabbcc -o yaml
+
+oc get pod/nginx-aabbcc-xxyyzz -o json
+oc get rs/nginx-aabbcc-xxyyzz -o yaml
+```
+
 ## Lab - Finding the containers in a Pod
 ```
 oc get pod ovnkube-node-99dfk -n openshift-ovn-kubernetes -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
