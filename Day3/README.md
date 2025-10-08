@@ -193,3 +193,11 @@ oc get nodes -o wide
 curl http://<any-node-ip>:<node-port>
 curl http://192.168.100.11:30829
 ```
+
+Things to note about nodeport services
+<pre>
+- they are not user-friendly, assume if facebook says you need access facebook website like http://www.facebook.com:30829
+- for each node-port service, a port like 30829 will be opened in every node in the openshift/kubernetes cluster, this leads to security issue.
+- assume, you have about 100 microservices, for which you have created 100 nodeport services, which means you need to open up 100 ports in all the nodes, the more port we open up in firewall it is more vulnerable, hence it is not recommended
+- in openshift the best alternate is creating a clusterip service and expose it via route for external access
+</pre>
