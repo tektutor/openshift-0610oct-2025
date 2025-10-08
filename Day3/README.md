@@ -68,6 +68,11 @@ If you wish to find more information about the service you create
 oc describe svc/nginx
 ```
 
+In order to access the nginx clusterip internal service, let's get inside the hello pod shell
+```
+oc rsh deploy/hello
+curl http://nginx:8080
+```
 
 ## Lab - Finding the containers in a Pod
 ```
