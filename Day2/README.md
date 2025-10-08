@@ -303,7 +303,7 @@ oc project jegan
 ## Lab - Deploying your first application in Openshift under your project
 ```
 oc project jegan
-oc create deployment nginx --image=tektutor/nginx:latest --replicas=3
+oc create deployment nginx --image=mage-registry.openshift-image-registry.svc:5000/openshift/nginx:1.0 --replicas=3
 ```
 
 Listing the deployments
