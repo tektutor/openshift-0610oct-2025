@@ -20,6 +20,7 @@ oc project jegan
 oc get pods
 oc port-forward nginx-7b58f48fbb-5vh56 9999:8080
 ```
+In the above command, the port 9999 is on the local machine and port 8080 is where nginx is listening inside the pod container. Hence, you need to choose some non-conflicting port in the place of 9999.
 
 You can access the web page from your web browser
 ```
