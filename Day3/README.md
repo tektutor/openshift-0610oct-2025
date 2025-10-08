@@ -131,8 +131,16 @@ oc get rs/nginx-aabbcc-xxyyzz -o yaml
 ## Lab - Deploying nginx in declarative style
 ```
 oc create deployment nginx --image=image-registry.openshift-image-registry.svc:5000/openshift/nginx:1.0 --replicas=3 --dry-run=client -o yaml > nginx-deploy.yml
-oc create -f nginx-deploy.yml
+oc create -f nginx-deploy.yml --save-config
 oc get deploy,rs,po
+
+# Update the nginx-deploy.yml replace replicas count from 3 to 5, save and apply
+oc apply -f nginx-deploy.yml
+oc get pods
+
+# Delete the nginx deploy
+oc delete -f nginx-deploy.yml
+oc get deploy,rs,pods
 ```
 
 ## Lab - Finding the containers in a Pod
