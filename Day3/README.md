@@ -72,7 +72,14 @@ In order to access the nginx clusterip internal service, let's get inside the he
 ```
 oc rsh deploy/hello
 curl http://nginx:8080
+cat /etc/resolv.conf
 ```
+In the above command
+<pre>
+nginx - is the name of the clusterip service
+8080 - is the service port
+</pre>
+
 
 ## Lab - Finding the containers in a Pod
 ```
