@@ -104,6 +104,13 @@ From your lab machine web browser, you may access at the url
 ```
 curl http://nginx-jegan.apps.ocp4.palmeto.org
 ```
+
+Once you are done with this exercise, you may delete the resources created in your project
+```
+oc project jegan
+oc delete deploy/nginx svc/nginx route/nginx
+```
+
 ## Lab - Finding the containers in a Pod
 ```
 oc get pod ovnkube-node-99dfk -n openshift-ovn-kubernetes -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
