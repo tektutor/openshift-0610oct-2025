@@ -300,6 +300,11 @@ oc project default
 oc project jegan
 ```
 
+Deleting a project
+```
+oc delete project jegan
+```
+
 ## Lab - Deploying your first application in Openshift under your project
 ```
 oc project jegan
