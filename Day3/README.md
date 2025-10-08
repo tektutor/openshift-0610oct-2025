@@ -145,5 +145,5 @@ oc get deploy,rs,pods
 
 ## Lab - Finding the containers in a Pod
 ```
-oc get pod ovnkube-node-99dfk -n openshift-ovn-kubernetes -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
+oc get pod nginx-7b58f48fbb-qr8kw -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
 ```
