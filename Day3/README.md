@@ -128,6 +128,13 @@ oc get pod/nginx-aabbcc-xxyyzz -o json
 oc get rs/nginx-aabbcc-xxyyzz -o yaml
 ```
 
+## Lab - Deploying nginx in declarative style
+```
+oc create deployment nginx --image=image-registry.openshift-image-registry.svc:5000/openshift/nginx:1.0 --replicas=3 --dry-run=client -o yaml > nginx-deploy.yml
+oc create -f nginx-deploy.yml
+oc get deploy,rs,po
+```
+
 ## Lab - Finding the containers in a Pod
 ```
 oc get pod ovnkube-node-99dfk -n openshift-ovn-kubernetes -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
