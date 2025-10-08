@@ -157,6 +157,7 @@ oc apply -f nginx-deploy.yml
 Generate the nginx clusterip service declarative manifest yaml file
 ```
 oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml
+# Generate the declarative clusterip internal service
 oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-svc.yml
 
 #Create the clusterip internal service declaratively
