@@ -147,3 +147,23 @@ oc get deploy,rs,pods
 ```
 oc get pod nginx-7b58f48fbb-qr8kw -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
 ```
+
+## Lab - Creating clusterip internal service in declarative style
+Make sure you have your nginx deployment created
+```
+oc apply -f nginx-deploy.yml
+```
+
+Generate the nginx clusterip service declarative manifest yaml file
+```
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml
+oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-svc.yml
+
+
+oc apply -f nginx-clusterip-svc.yml
+
+Generate the declarative route manifest script
+oc expose svc/nginx --dry-run=client -o yaml > nginx-route.yml
+oc apply -f nginx-route.yml
+oc get route
+```
