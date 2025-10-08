@@ -42,6 +42,32 @@ http://localhost:9999
   3. LoadBalancer External service
 </pre>
 
+## Lab - Let's deploy two applications under your project
+```
+oc project jegan
+oc create deployment nginx --image=image-registry.openshift-image-registry.svc:5000/openshift/nginx:1.0 --replicas=3
+oc create deployment hello --image=image-registry.openshift-image-registry.svc:5000/openshift/spring-ms:latest --replicas=3
+
+oc get pods
+```
+
+Let's create an internal service for nginx deployment
+```
+oc expose deploy/nginx --type=ClusterIP --port=8080
+```
+
+Listing the services
+```
+oc get services
+oc get service
+oc get svc
+```
+
+If you wish to find more information about the service you create
+```
+oc describe svc/nginx
+```
+
 
 ## Lab - Finding the containers in a Pod
 ```
