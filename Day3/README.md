@@ -201,3 +201,11 @@ Things to note about nodeport services
 - assume, you have about 100 microservices, for which you have created 100 nodeport services, which means you need to open up 100 ports in all the nodes, the more port we open up in firewall it is more vulnerable, hence it is not recommended
 - in openshift the best alternate is creating a clusterip service and expose it via route for external access
 </pre>
+
+## Info - LoadBalancer service
+<pre>
+- this type of service is generally used in public cloud Openshift/Kubernetes setup
+- when a LoadBalancer type of service is created in aws eks or azure aks, it will spin-up one external loadbalancer like aws elb/alb
+- in case you don't prefer the in-built load-balancing supported by Kubernetes/Openshift kube-proxy you could consider using LoadBalancer service in public cloud environments
+- in case you wish to use this loadbalancer service in on-prem openshift/kubernetes cluster, you should install Metallb operator and configure it in order to get support for LoadBalancer in a local Kubernetes/Openshift cluster like our training environment
+</pre>
