@@ -166,4 +166,6 @@ Generate the declarative route manifest script
 oc expose svc/nginx --dry-run=client -o yaml > nginx-route.yml
 oc apply -f nginx-route.yml
 oc get route
+
+curl http://nginx-jegan.apps.ocp4.palmeto.org
 ```
