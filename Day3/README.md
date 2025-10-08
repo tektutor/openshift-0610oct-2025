@@ -92,6 +92,18 @@ How service discovery works
 - as per the load-balancing algorithm configured in the kube-proxy it routes the call to one of the Pod endpoint listed in the endpoints string
 </pre>
 
+
+In order to expose the application for external access with a public url, you could create a route
+```
+oc expose svc/nginx
+oc get routes
+oc get route
+```
+
+From your lab machine web browser, you may access at the url
+```
+curl http://nginx-jegan.apps.ocp4.palmeto.org
+```
 ## Lab - Finding the containers in a Pod
 ```
 oc get pod ovnkube-node-99dfk -n openshift-ovn-kubernetes -o jsonpath='{range .spec.containers[*]}{.name}{"\n"}{end}'
