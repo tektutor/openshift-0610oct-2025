@@ -235,6 +235,23 @@
   - What is the name of the containers
 </pre>
 
+## Info - Openshift Project Overview
+<pre>
+- is a logical namespace that groups together a set of related Kubernetes resources
+- supports access controls, resource quotos and policies
+- namespace is a Kubernetes feature
+- project is an Openshift features on top of namespace
+- Project typically contains
+  - Pods
+  - Services
+  - Routes
+  - Builds
+  - Deployments, DaemonSet, StatefulSet, Job, CronJob
+  - ConfigMaps & Secrets
+  - Resource Quotos
+  - Role Based Access Control (RBAC) 
+</pre>
+
 ## Lab - Listing openshift nodes in the cluster
 ```
 kubectl version
