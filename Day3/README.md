@@ -80,6 +80,17 @@ nginx - is the name of the clusterip service
 8080 - is the service port
 </pre>
 
+How service discovery works
+<pre>
+- When Pod containers are created by kubelet, kubelt configures the /etc/resolv.conf file with the DNS Service IP 
+- when we access http://nginx:8080 url, this request will be forwarded to the DNS server configured in the /etc/resolv.conf
+- The DNS Server IP we see in the /etc/resolv.conf is the DNS Service IP, which means behind that DNS Service there will 6 load-balanced DNS Pods
+- on each node one DNS Pod runs, that will resolve the nginx service name to its corresponding service IP
+- this is the way  the request will locate the service, the service has a selector label something like app=nginx
+- the kube-proxy pod that runs in every node picks this selector label app=nginx and retrieves the endpoints
+  oc get endpoints -l app=nginx
+- as per the load-balancing algorithm configured in the kube-proxy it routes the call to one of the Pod endpoint listed in the endpoints string
+</pre>
 
 ## Lab - Finding the containers in a Pod
 ```
