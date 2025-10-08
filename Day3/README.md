@@ -159,13 +159,14 @@ Generate the nginx clusterip service declarative manifest yaml file
 oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml
 oc expose deploy/nginx --type=ClusterIP --port=8080 --dry-run=client -o yaml > nginx-clusterip-svc.yml
 
-
+#Create the clusterip internal service declaratively
 oc apply -f nginx-clusterip-svc.yml
 
-Generate the declarative route manifest script
+# Generate the declarative route manifest script
 oc expose svc/nginx --dry-run=client -o yaml > nginx-route.yml
 oc apply -f nginx-route.yml
 oc get route
 
+# Test the route
 curl http://nginx-jegan.apps.ocp4.palmeto.org
 ```
