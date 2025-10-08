@@ -8,6 +8,11 @@ oc get is -n openshift | grep wordpress
 oc get is -n openshift | grep mariadb
 ```
 
+## Lab - Finding Pod IP address and node where the Pod is running
+```
+oc project jegan
+oc get pods -o wide
+```
 
 
 ## Lab - Finding the containers in a Pod
