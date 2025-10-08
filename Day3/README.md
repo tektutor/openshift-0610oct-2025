@@ -171,3 +171,25 @@ oc get route
 # Test the route
 curl http://nginx-jegan.apps.ocp4.palmeto.org
 ```
+
+## Lab - Generate nodeport external service declarative script and deploy it
+```
+oc apply -f nginx-deploy.yml
+
+oc expose deploy/nginx --type=NodePort --port=8080 --dry-run=client -o yaml
+oc expose deploy/nginx --type=NodePort --port=8080 --dry-run=client -o yaml > nginx-nodeport-svc.yml
+
+# Make sure you have deleted the nginx clusterip service
+oc delete -f nginx-clusterip-svc.yml
+
+# Create the nodeport service declaratively
+oc apply -f nginx-nodeport-svc.yml
+
+# list the nodeport svc
+oc get svc
+
+# Test the nodeport external service
+oc get nodes -o wide
+curl http://<any-node-ip>:<node-port>
+curl http://192.168.100.11:30829
+```
