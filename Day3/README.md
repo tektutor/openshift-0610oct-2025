@@ -225,3 +225,26 @@ Things to note about nodeport services
   2. Ansible
   3. Helm Package Manager
 </pre>
+
+## Info - ReplicationController vs ReplicaSet, Deployment, DeploymentConfig
+<pre>
+- In older versions of kubernetes, the only way we could deploy applications into Kubernetes is via ReplicationController
+- ReplicationController supports stateless applications
+- ReplicationController is reponsible for two main functionalities
+  1. Scale up/down
+  2. Rolling update
+     - is a way to upgrade your application from one version to other without downtime
+     - it only supports imperative style while performing rolling update, no declarative approach supported
+- As Openshift is based on Kubernetes, in Openshift also one has to make use of ReplicationController to deploy regular applications
+- But Openshift Team, wanted a declarative way of deploying application, scale up/down and rolling update all in declarative style
+  - What they did is, they added a new type of resource called DeploymentConfig in Openshift which is based on ReplicationController
+  - With this, Openshift users were able to deploy applications, scale up/down, perform rolling update all in declarative approach
+- Meanwhile, Kubernetes team decided to refactor ReplicationController by break its functionality with different resources namely
+  1. ReplicaSet and
+     - ReplicaSet taking ReplicaSet as input supports performing scale up/down declaratively
+  2. Deployment
+     - while Deployment Controller taking Deployment as input supports Rolling update declaratively
+  - for backward compatibility, Kubernetes still supports ReplicationController, however it is deprecated. Hence, for new application we are not supposed use it.
+- The Openshift team - deprecated use of DeploymentConfig as ReplicationController is no more recommended by Kubernetes. As Openshift is based on Kubernetes, Openshift also depricated use of ReplicationController and DeploymentConfig.  Hence, for all new applications ideally we should use only Deployment & ReplicaSet.
+  
+</pre>
