@@ -8,6 +8,11 @@ oc get is -n openshift | grep wordpress
 oc get is -n openshift | grep mariadb
 ```
 
+## Info - For detailed instructions on how to install and configure Metallb operator in Openshift
+<pre>
+https://medium.com/tektutor/using-metallb-loadbalancer-with-bare-metal-openshift-onprem-4230944bfa35  
+</pre>
+
 ## Lab - Finding Pod IP address and node where the Pod is running
 ```
 oc project jegan
