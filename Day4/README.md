@@ -21,8 +21,30 @@
 - Typically, PVC will express the below
   1. Size of the disk
   2. Access Mode
+     - 
   3. StorageClass(Optional)
   4. Label Selector (Optional)
 - When an application requests for PV by way of PVC, the storage controller in Openshift will scan the openshift cluster looking for a matching PV, if it finds a matching PV, it will let your application claim and use it
 - In case there is no macthin PV for your PVC, then your respestive Pod will be in Pending until it gets a matching PV.
 </pre>
+
+## Lab - Deploying multipod Wordpress and Mysql database that uses external storage
+In case you haven't cloned this training repository already, you can do now
+```
+cd ~
+git clone https://github.com/tektutor/openshift-0610oct-2025.git
+```
+
+After cloning the repository
+```
+cd ~/openshift-0610oct-2025
+git pull
+cd Day4/wordpress
+ls -l
+# Make sure you have updated the mysql-pv.yml, mysql-pvc.yml, mysql-deploy.yml
+# Make sure you have updated the wordpress-pv.yml, wordpress-pvc.yml and wordpress-deploy.yml
+./deploy.sh
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/ffebe2a9-0837-43f9-aeee-a494ed1eb09d" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/9cac90a9-c6ba-4be0-9714-0ed596735819" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/844336a1-9235-49ed-84f8-52fdb5704455" />
