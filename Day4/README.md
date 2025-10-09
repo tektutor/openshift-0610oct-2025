@@ -62,3 +62,21 @@ ls -l
 - The backend for Ingress is service
 - Ingress url will forward the request one of the services behind it based on rules
 </pre>
+
+## Lab - Ingress
+```
+cd ~/openshift-0610oct-2025
+git pull
+cd Day4/ingress
+oc apply -f nginx-deploy.yml
+oc apply -f hello-deploy.yml
+oc apply -f nginx-svc.yml
+oc apply -f hello-svc.yml
+oc apply -f ingress.yml
+oc get ingress
+oc describe ingress/tektutor
+
+curl http://tektutor.apps.ocp4.palmeto.org/nginx
+curl http://tektutor.apps.ocp4.palmeto.org/hello
+
+```
