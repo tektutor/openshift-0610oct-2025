@@ -214,3 +214,14 @@ Things to note about nodeport services
 - in case you don't prefer the in-built load-balancing supported by Kubernetes/Openshift kube-proxy you could consider using LoadBalancer service in public cloud environments
 - in case you wish to use this loadbalancer service in on-prem openshift/kubernetes cluster, you should install Metallb operator and configure it in order to get support for LoadBalancer in a local Kubernetes/Openshift cluster like our training environment
 </pre>
+
+## Info - Kubernetes/Openshift Operator Overview
+<pre>
+- Operator = Custom Resources + Custom Controller
+- In case you wish to extend the functionality of Kubernetes/Openshift by add your own custom resource you can develop an operator
+- Kubernetes/Openshift operators can be developed using Operator SDK
+- Operator SDK supports developing custom operators using
+  1. Go language
+  2. Ansible
+  3. Helm Package Manager
+</pre>
