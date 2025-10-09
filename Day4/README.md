@@ -48,3 +48,17 @@ ls -l
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/ffebe2a9-0837-43f9-aeee-a494ed1eb09d" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/9cac90a9-c6ba-4be0-9714-0ed596735819" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/844336a1-9235-49ed-84f8-52fdb5704455" />
+
+## Info - Ingress Overview
+<pre>
+- Ingress is routing/forwarding rules
+- In order to apply the Ingress rules, our cluster should support Ingress Controller
+- Some Popular Ingress Controller
+  - HAProxy Ingress Controller ( open source )
+  - Nginx Ingress Controller ( open source )
+  - F5 Ingress Controller ( Enterprise grade Nginx - this comes with Support )
+- The Ingress Controller keeps monitoring for new Ingress rules defined in different project namespaces
+- When Ingress detects a new Ingress resource, it picks the rules from Ingress and Configures the respective load-balancer with those rules
+- The backend for Ingress is service
+- Ingress url will forward the request one of the services behind it based on rules
+</pre>
