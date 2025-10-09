@@ -45,6 +45,6 @@ ls -l
 # Make sure you have updated the wordpress-pv.yml, wordpress-pvc.yml and wordpress-deploy.yml
 ./deploy.sh
 ```
-
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/ffebe2a9-0837-43f9-aeee-a494ed1eb09d" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/9cac90a9-c6ba-4be0-9714-0ed596735819" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/844336a1-9235-49ed-84f8-52fdb5704455" />
