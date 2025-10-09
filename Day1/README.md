@@ -384,6 +384,14 @@ exit
 ```
 
 ## Lab - Setting up a Load Balancer with nginx
+
+Cloning this repository in your lab machine terminal
+```
+cd ~/
+git clone https://github.com/tektutor/openshift-0610oct-2025.git
+cd openshift-0610oct-2025/Day1
+```
+
 Let's delete all existing containers, replace 'jegan' with your names or as per your container names
 ```
 docker rm -f nginx1-jegan nginx2-jegan nginx3-jegan
@@ -470,7 +478,9 @@ http {
 
 Containers created using tektutor Nginx image by default works as web server, hence we need to configure it to work like load balancer
 ```
-docker cp lb:/etc/nginx/nginx.conf .
+cd ~/openshift-0610oct-2025/Day1
+code .
+docker cp nginx.conf lb:/etc/nginx/nginx.conf
 ```
 
 To apply config changes on lb container, let's restart lb container
@@ -482,4 +492,51 @@ docker ps
 Now you can access the loadbalancer from your lab machine web browse
 ```
 http://192.168.3.200:80 //or 192.168.3.201:80 in case you are working in second server
+```
+
+## Lab - Persisting container data in an external storage
+```
+mkdir -p ~/mysql
+docker run -d --name mysql-jegan --hostname mysql-jegan -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest 
+```
+
+Get inside the container shell to connect with mysql server
+```
+docker exec -it mysql-jegan /bin/sh
+mysql -u root -p
+CREATE DATABASE tektutor;
+USE tektutor;
+CREATE TABLE training ( id INT NOT NULL UNIQUE, name VARCHAR(300) NOT NULL, duration VARCHAR(300) NOT NULL, PRIMARY KEY(id) );
+INSERT INTO training VALUES ( 1, "DevOps", "5 Days" );
+INSERT INTO training VALUES ( 2, "OpenShift", "5 Days");
+SELECT * FROM training;
+
+exit
+exit
+```
+
+Let's delete the mysql container
+```
+docker stop mysql
+docker rm mysql
+```
+Let's new mysql container
+```
+docker run -d --name mysql-jegan --hostname mysql-jegan -e MYSQL_ROOT_PASSWORD=root@123 -v /home/jegan/mysql:/var/lib/mysql mysql:latest 
+```
+
+
+Let's get inside the mysql container shell
+```
+docker exec -it mysql-jegan /bin/sh
+mysql -u root -p
+SHOW DATABASES;
+USE tektutor;
+SHOW TABLES;
+SELECT * FROM training;
+```
+
+Checking the mysql db server logs
+```
+docker logs mysql-jegan
 ```
