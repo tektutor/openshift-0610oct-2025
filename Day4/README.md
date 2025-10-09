@@ -29,7 +29,7 @@
 </pre>
 
 ## Lab - Deploying multipod Wordpress and Mysql database that uses external storage
-In case you haven't cloned this training already, you can do now
+In case you haven't cloned this training repository already, you can do now
 ```
 cd ~
 git clone https://github.com/tektutor/openshift-0610oct-2025.git
