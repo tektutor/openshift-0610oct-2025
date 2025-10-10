@@ -926,7 +926,7 @@ H/02 * * * *
 <pre>
 Definition - Pipeline Script from SCM
 SCM - Git
-Repository Url - https://github.com/tektutor/openshift-sep-2025.git
+Repository Url - https://github.com/tektutor/openshift-0610oct-2025.git
 Branch specifier - */main
 </pre>
 
