@@ -802,3 +802,43 @@ oc new-project jegan
 
 oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://github.com/tektutor/spring-ms.git --strategy=source
 ```
+
+
+## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
+
+Let's start Jenkins from command-line, you may to give a different port in case you get binding error
+```
+cd ~
+cp /tmp/jenkins.war ~
+java -jar ~/jenkins.war --httpPort=9090
+```
+
+Accessing the Jenkins Dashboard, the port depend
+```
+http://localhost:9090
+```
+
+### Jenkins Job
+
+##### General section
+<pre>
+Description - CICD Pipeline Demo
+</pre>
+
+#### Triggers section
+```
+H/02 * * * *
+```
+
+#### Pipeline section
+<pre>
+Definition - Pipeline Script from SCM
+SCM - Git
+Repository Url - https://github.com/tektutor/openshift-sep-2025.git
+Branch specifier - */main
+</pre>
+
+#### Script Path
+<pre>
+Day5/CICD-Demo/Jenkinsfile  
+</pre>
