@@ -835,6 +835,38 @@ oc rollout undo deploy/nginx
 oc rollout history deploy/nginx
 ```
 
+## Info - Helm Overview
+<pre>
+- Helm  is a package manager for Kubernetes/Openshift
+- Using Helm we can download and deploy application into K8s/Openshift
+- Helm packaged application is called chart
+- Helm is opensource tool that can be installed on your system as a stand-alone command-line tool
+- Helm supports
+  - download from the helm community and install them into your Kubernetes/Openshift cluster
+  - could package your custom application using Helm as charts and deploy them into Kubernetes/Openshift cluster
+  - uninstalling applications deployed using Helm
+  - upgrading applications deployed using helm from one version to other 
+</pre>
+
+## Lab - Packaging our custom wordpress and maraiab application as helm chart and deploying into openshift
+```
+cd ~/openshift-0610oct-2025
+git pull
+cd Day5/helm-chart
+helm create wordpress
+rm -rf wordpress/*
+
+# Update the values.yaml file with your NFS Server IP, your mysql nfs path and your wordpress nfs path
+cp values.yaml wordpress
+cp scripts/* wordpress/templates
+
+helm package wordpress
+ls
+helm install wordpress wordpress-0.1.0.tgz
+helm list
+oc get pods
+```
+
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
 
 Let's start Jenkins from command-line, you may to give a different port in case you get binding error
