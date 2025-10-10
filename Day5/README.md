@@ -857,6 +857,9 @@ helm create wordpress
 tree wordpress
 rm -rf wordpress/*
 
+# Find your nfs shared folders
+showmount -e | grep jegan
+
 # Update the values.yaml file with your NFS Server IP, your mysql nfs path and your wordpress nfs path
 cp values.yaml wordpress
 cp scripts/* wordpress/templates
