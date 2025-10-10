@@ -25,6 +25,6 @@ spec:
                 values:
                 - ssd
       containers:
-      - image: image-registry.openshift-image-registry.svc:5000/openshift/nginx:1.29
+      - image: image-registry.openshift-image-registry.svc:5000/openshift/nginx:1.0
         name: nginx
         imagePullPolicy: IfNotPresent

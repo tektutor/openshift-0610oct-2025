@@ -1,5 +1,15 @@
 # Day 5
 
+## Post Assessment 
+<pre>
+https://forms.cloud.microsoft/r/u7eNcEn0Ee
+</pre>
+
+## Feedback 
+<pre>
+https://forms.cloud.microsoft/r/mmgzeDtkiV
+</pre>
+
 ## Info - Security your Openshift Cluster and applications deployed in Openshift
 
 #### Authentication & Authorization
@@ -739,6 +749,18 @@ data:
         com.example.jms: DEBUG  
 </pre>
 
+## Lab - Deploying your JMS Producer
+```
+oc new-project jegan
+oc create deploy jms-producer --image=tektutor/jms-producer:1.0
+oc create deploy jms-consumer --image=tektutor/jms-consumer:1.0
+
+oc get pods
+oc logs -f your-jms-producer-pod-name
+oc logs -f your-jms-consumer-pod-name
+
+```
+
 ## Info - Openshift S2I Overview
 <pre>
 - In Kubernetes, we can deploy applications only using container images
@@ -835,7 +857,56 @@ oc rollout undo deploy/nginx
 oc rollout history deploy/nginx
 ```
 
+## Info - Helm Overview
+<pre>
+- Helm  is a package manager for Kubernetes/Openshift
+- Using Helm we can download and deploy application into K8s/Openshift
+- Helm packaged application is called chart
+- Helm is opensource tool that can be installed on your system as a stand-alone command-line tool
+- Helm supports
+  - download from the helm community and install them into your Kubernetes/Openshift cluster
+  - could package your custom application using Helm as charts and deploy them into Kubernetes/Openshift cluster
+  - uninstalling applications deployed using Helm
+  - upgrading applications deployed using helm from one version to other 
+</pre>
+
+## Lab - Packaging our custom wordpress and maraiab application as helm chart and deploying into openshift
+```
+cd ~/openshift-0610oct-2025
+git pull
+cd Day5/helm-chart
+helm create wordpress
+tree wordpress
+rm -rf wordpress/templates/*
+
+# Find your nfs shared folders
+showmount -e | grep jegan
+
+# Update the values.yaml file with your NFS Server IP, your mysql nfs path and your wordpress nfs path
+cat values.yaml
+cp values.yaml wordpress
+cp scripts/* wordpress/templates
+
+helm package wordpress
+ls
+helm install wordpress wordpress-0.1.0.tgz
+helm list
+oc get pods
+```
+
+Once you are done with this exercise, you can uninstall wordpress using helm
+```
+helm list
+helm uninstall wordpress
+oc get deploy,rs,po,pv,pvc,svc,route
+```
+
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
+
+For step by step instruction to install and configure Jenkins, you may refer my blog
+<pre>
+https://www.tektutor.org/ci-cd-with-maven-github-docker-jenkins/  
+</pre>
 
 Let's start Jenkins from command-line, you may to give a different port in case you get binding error
 ```
@@ -865,7 +936,7 @@ H/02 * * * *
 <pre>
 Definition - Pipeline Script from SCM
 SCM - Git
-Repository Url - https://github.com/tektutor/openshift-sep-2025.git
+Repository Url - https://github.com/tektutor/openshift-0610oct-2025.git
 Branch specifier - */main
 </pre>
 
