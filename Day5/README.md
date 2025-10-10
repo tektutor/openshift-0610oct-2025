@@ -855,7 +855,7 @@ git pull
 cd Day5/helm-chart
 helm create wordpress
 tree wordpress
-rm -rf wordpress/*
+rm -rf wordpress/templates/*
 
 # Find your nfs shared folders
 showmount -e | grep jegan
