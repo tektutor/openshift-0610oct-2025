@@ -793,6 +793,8 @@ oc new-project jegan
 
 oc new-app --name=hello https://github.com/tektutor/spring-ms.git --strategy=docker
 ```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/82dfd08a-2053-4ff8-a686-498e5a69f490" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/b29800f1-f24b-4416-9897-4e2fe9da8313" />
 
 
 ## Lab - Deploying your application into Openshift using S2I source strategy
