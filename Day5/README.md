@@ -808,6 +808,7 @@ oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://githu
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/df2f2e37-6ae0-4aa2-b7f8-24359f17d27e" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/a403298f-40f7-4f1b-a2ed-149e9e7f8302" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/32aa9d75-fa7f-424e-8888-dfae6a9a8e41" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
 
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
