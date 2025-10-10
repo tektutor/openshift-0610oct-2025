@@ -861,6 +861,7 @@ rm -rf wordpress/templates/*
 showmount -e | grep jegan
 
 # Update the values.yaml file with your NFS Server IP, your mysql nfs path and your wordpress nfs path
+cat values.yaml
 cp values.yaml wordpress
 cp scripts/* wordpress/templates
 
