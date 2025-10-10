@@ -1,4 +1,4 @@
-nfs_server_ip: "192.168.10.200"  
+nfs_server_ip: "192.168.3.200"  
 nfs_wordpress_path: "/var/nfs/jegan/wordpress"
 nfs_mysql_path: "/var/nfs/jegan/mysql"
 wordpress_pv_size: "100Mi"
