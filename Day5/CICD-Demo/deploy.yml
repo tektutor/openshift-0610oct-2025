@@ -18,7 +18,7 @@ spec:
       containers:
       - image: image-registry.openshift-image-registry.svc:5000/jegan/tektutor-spring-hello:latest
         name: hello
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service
