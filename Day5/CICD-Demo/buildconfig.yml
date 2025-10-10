@@ -10,7 +10,7 @@ spec:
   source:
     type: Git
     git:
-      uri: "https://github.com/tektutor/openshift-sep-2025.git"
+      uri: "https://github.com/tektutor/openshift-0610oct-2025.git"
     contextDir: "Day5/CICD-Demo"
   strategy:
     type: Docker
