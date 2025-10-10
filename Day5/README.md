@@ -738,3 +738,138 @@ data:
       level:
         com.example.jms: DEBUG  
 </pre>
+
+## Info - Openshift S2I Overview
+<pre>
+- In Kubernetes, we can deploy applications only using container images
+- In Openshift, we can deploy applications
+  - using container image
+  - using GitHub, BitBucket, Gilab etc url that has your application source code (S2I)
+- Openshift supports many S2I strategies
+  - Docker
+  - Source
+  - Build
+  - Custom
+  - Pipeline ( Jenkinsfile )
+</pre>
+
+## Info - Openshift S2I Docker Strategy Overview
+<pre>
+- Source code from any version control can be used
+- In our case, we will be using GitHub, hence our repository must be have the below for S2I Docker strategy
+  - application source code
+  - Dockerfile
+- With the GitHub url, branch details, Openshift will generate a BuidConfig 
+- Using the BuildConfig, Openshift Build Controller will create Build (Pod), 
+  - clones your source code
+  - follows the instructions mentioned in your Dockerfile
+  - builds your application to create applicaiton executable
+  - builds a custom container image with your applicaiton executable configured as default application
+  - Pushes the image to Openshift's Internal Image Registry
+  - It deploys the applicaiton using the custom image pushed recently into the Internal Image Registry
+  - It creates a service for the deployed applicaton
+</pre>
+
+## Info - Openshift S2I Source Strategy Overview
+<pre>
+- Source code from any version control can be used
+- In our case, we will be using GitHub, hence our repository must be have the below for S2I source strategy
+  - application source code
+- With the GitHub url, branch details, Openshift will generate a BuidConfig and a Dockerfile
+- Using the BuildConfig, Openshift Build Controller will create Build (Pod), 
+  - clones your source code
+  - follows the instructions mentioned in your Dockerfile
+  - builds your application to create applicaiton executable
+  - builds a custom container image with your applicaiton executable configured as default application
+  - Pushes the image to Openshift's Internal Image Registry
+  - It deploys the applicaiton using the custom image pushed recently into the Internal Image Registry
+  - It creates a service for the deployed applicaton 
+</pre>
+
+## Lab - Deploying your application into Openshift using S2I docker strategy
+```
+oc delete project jegan
+oc new-project jegan
+
+oc new-app --name=hello https://github.com/tektutor/spring-ms.git --strategy=docker
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/82dfd08a-2053-4ff8-a686-498e5a69f490" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/b29800f1-f24b-4416-9897-4e2fe9da8313" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/32aa9d75-fa7f-424e-8888-dfae6a9a8e41" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
+
+
+## Lab - Deploying your application into Openshift using S2I source strategy
+```
+oc delete project jegan
+oc new-project jegan
+
+oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://github.com/tektutor/spring-ms.git --strategy=source
+```
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/df2f2e37-6ae0-4aa2-b7f8-24359f17d27e" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/a403298f-40f7-4f1b-a2ed-149e9e7f8302" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/32aa9d75-fa7f-424e-8888-dfae6a9a8e41" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
+
+## Lab - Rolling update
+```
+oc delete project jegan
+oc new-project jegan
+
+
+oc create deploy nginx --image=image-registry.openshift-image-registry.svc:5000/openshift/tektutor-nginx:1.0 --replicas=3
+oc get pods -o yaml | grep image
+oc expose deploy/nginx --port=80
+oc expose svc/nginx
+
+curl  http://nginx-jegan.apps.ocp4.palmeto.org
+
+# rolling update - from v1.0 to v2.0
+oc edit deploy/nginx # update the image version from 1.0 to 2.0
+oc get pods -o yaml | grep image
+curl  http://nginx-jegan.apps.ocp4.palmeto.org
+
+## rolling update - status
+oc rollout status deploy/nginx
+oc rollout undo deploy/nginx
+oc rollout history deploy/nginx
+```
+
+## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
+
+Let's start Jenkins from command-line, you may to give a different port in case you get binding error
+```
+cd ~
+cp /tmp/jenkins.war ~
+java -jar ~/jenkins.war --httpPort=9090
+```
+
+Accessing the Jenkins Dashboard, the port depend
+```
+http://localhost:9090
+```
+
+### Jenkins Job
+
+##### General section
+<pre>
+Description - CICD Pipeline Demo
+</pre>
+
+#### Triggers section
+```
+H/02 * * * *
+```
+
+#### Pipeline section
+<pre>
+Definition - Pipeline Script from SCM
+SCM - Git
+Repository Url - https://github.com/tektutor/openshift-sep-2025.git
+Branch specifier - */main
+</pre>
+
+#### Script Path
+<pre>
+Day5/CICD-Demo/Jenkinsfile  
+</pre>
