@@ -795,6 +795,8 @@ oc new-app --name=hello https://github.com/tektutor/spring-ms.git --strategy=doc
 ```
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/82dfd08a-2053-4ff8-a686-498e5a69f490" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/b29800f1-f24b-4416-9897-4e2fe9da8313" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/32aa9d75-fa7f-424e-8888-dfae6a9a8e41" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
 
 
 ## Lab - Deploying your application into Openshift using S2I source strategy
@@ -804,7 +806,9 @@ oc new-project jegan
 
 oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://github.com/tektutor/spring-ms.git --strategy=source
 ```
-
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/df2f2e37-6ae0-4aa2-b7f8-24359f17d27e" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/a403298f-40f7-4f1b-a2ed-149e9e7f8302" />
+<img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
 
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
 
