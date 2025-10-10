@@ -893,6 +893,11 @@ oc get deploy,rs,po,pv,pvc,svc,route
 
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
 
+For step by step instruction to install and configure Jenkins, you may refer my blog
+<pre>
+https://www.tektutor.org/ci-cd-with-maven-github-docker-jenkins/  
+</pre>
+
 Let's start Jenkins from command-line, you may to give a different port in case you get binding error
 ```
 cd ~
