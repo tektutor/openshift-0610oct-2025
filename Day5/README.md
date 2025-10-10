@@ -3,6 +3,7 @@
 ## Info - Security your Openshift Cluster and applications deployed in Openshift
 
 #### Authentication & Authorization
+
 <pre>
 - Authentication
   - Could setup Identity providers (IDPs) to authenticate openshift login
