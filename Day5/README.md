@@ -811,6 +811,30 @@ oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://githu
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/32aa9d75-fa7f-424e-8888-dfae6a9a8e41" />
 <img width="1920" height="1168" alt="image" src="https://github.com/user-attachments/assets/86e4b2e9-5880-468a-bf99-1d895ae0e7ad" />
 
+## Lab - Rolling update
+```
+oc delete project jegan
+oc new-project jegan
+
+
+oc create deploy nginx --image=image-registry.openshift-image-registry.svc:5000/openshift/tektutor-nginx:1.0 --replicas=3
+oc get pods -o yaml | grep image
+oc expose deploy/nginx --port=80
+oc expose svc/nginx
+
+curl  http://nginx-jegan.apps.ocp4.palmeto.org
+
+# rolling update - from v1.0 to v2.0
+oc edit deploy/nginx # update the image version from 1.0 to 2.0
+oc get pods -o yaml | grep image
+curl  http://nginx-jegan.apps.ocp4.palmeto.org
+
+## rolling update - status
+oc rollout status deploy/nginx
+oc rollout undo deploy/nginx
+oc rollout history deploy/nginx
+```
+
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
 
 Let's start Jenkins from command-line, you may to give a different port in case you get binding error
