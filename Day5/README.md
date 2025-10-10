@@ -854,6 +854,7 @@ cd ~/openshift-0610oct-2025
 git pull
 cd Day5/helm-chart
 helm create wordpress
+tree wordpress
 rm -rf wordpress/*
 
 # Update the values.yaml file with your NFS Server IP, your mysql nfs path and your wordpress nfs path
@@ -865,6 +866,13 @@ ls
 helm install wordpress wordpress-0.1.0.tgz
 helm list
 oc get pods
+```
+
+Once you are done with this exercise, you can uninstall wordpress using helm
+```
+helm list
+helm uninstall wordpress
+oc get deploy,rs,po,pv,pvc,svc,route
 ```
 
 ## Lab - CI/CD Pipeline with Jenkins, Ansible and OpenShift
