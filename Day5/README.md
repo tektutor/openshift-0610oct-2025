@@ -738,3 +738,67 @@ data:
       level:
         com.example.jms: DEBUG  
 </pre>
+
+## Info - Openshift S2I Overview
+<pre>
+- In Kubernetes, we can deploy applications only using container images
+- In Openshift, we can deploy applications
+  - using container image
+  - using GitHub, BitBucket, Gilab etc url that has your application source code (S2I)
+- Openshift supports many S2I strategies
+  - Docker
+  - Source
+  - Build
+  - Custom
+  - Pipeline ( Jenkinsfile )
+</pre>
+
+## Info - Openshift S2I Docker Strategy Overview
+<pre>
+- Source code from any version control can be used
+- In our case, we will be using GitHub, hence our repository must be have the below for S2I Docker strategy
+  - application source code
+  - Dockerfile
+- With the GitHub url, branch details, Openshift will generate a BuidConfig 
+- Using the BuildConfig, Openshift Build Controller will create Build (Pod), 
+  - clones your source code
+  - follows the instructions mentioned in your Dockerfile
+  - builds your application to create applicaiton executable
+  - builds a custom container image with your applicaiton executable configured as default application
+  - Pushes the image to Openshift's Internal Image Registry
+  - It deploys the applicaiton using the custom image pushed recently into the Internal Image Registry
+  - It creates a service for the deployed applicaton
+</pre>
+
+## Info - Openshift S2I Source Strategy Overview
+<pre>
+- Source code from any version control can be used
+- In our case, we will be using GitHub, hence our repository must be have the below for S2I source strategy
+  - application source code
+- With the GitHub url, branch details, Openshift will generate a BuidConfig and a Dockerfile
+- Using the BuildConfig, Openshift Build Controller will create Build (Pod), 
+  - clones your source code
+  - follows the instructions mentioned in your Dockerfile
+  - builds your application to create applicaiton executable
+  - builds a custom container image with your applicaiton executable configured as default application
+  - Pushes the image to Openshift's Internal Image Registry
+  - It deploys the applicaiton using the custom image pushed recently into the Internal Image Registry
+  - It creates a service for the deployed applicaton 
+</pre>
+
+## Lab - Deploying your application into Openshift using S2I docker strategy
+```
+oc delete project jegan
+oc new-project jegan
+
+oc new-app --name=hello https://github.com/tektutor/spring-ms.git --strategy=docker
+```
+
+
+## Lab - Deploying your application into Openshift using S2I source strategy
+```
+oc delete project jegan
+oc new-project jegan
+
+oc new-app --name=hello registry.access.redhat.com/ubi8/openjdk-17~https://github.com/tektutor/spring-ms.git --strategy=source
+```
