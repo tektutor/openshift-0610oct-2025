@@ -739,6 +739,18 @@ data:
         com.example.jms: DEBUG  
 </pre>
 
+## Lab - Deploying your JMS Producer
+```
+oc new-project jegan
+oc create deploy jms-producer --image=tektutor/jms-producer:1.0
+oc create deploy jms-consumer --image=tektutor/jms-consumer:1.0
+
+oc get pods
+oc logs -f your-jms-producer-pod-name
+oc logs -f your-jms-consumer-pod-name
+
+```
+
 ## Info - Openshift S2I Overview
 <pre>
 - In Kubernetes, we can deploy applications only using container images
